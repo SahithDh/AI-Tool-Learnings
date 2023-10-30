@@ -1,0 +1,19 @@
+## Generation of code for building a simple calculator
+
+Command : %%palm
+convert C function to java to build a simple calculator
+
+Code : c #include <stdio.h> int main() { int a, b, c; char op; 
+// Get the values of a, b, and c from the user. printf("Enter the value of a: "); 
+scanf(" %d ", &a); printf("Enter the value of b: "); scanf(" %d ", &b);
+printf("Enter the operator (+, -, *, /): "); scanf(" %c ", &op); // Calculate the value of c. switch (op) 
+{ case '+': c = a + b; break; case '-': c = a - b; break; case '*': c = a * b;
+break; case '/': c = a / b; break; default: printf("Invalid operator.\n"); return 1; } 
+// Print the value of c. printf("The value of c is %d.\n", c); return 0; } ```
+```java import java.util.Scanner; public class Calculator { public static void main(String[] args)
+{ int a, b, c; char op; // Get the values of a, b, and c from the user. Scanner scanner = new Scanner(System.in);
+System.out.println("Enter the value of a: "); a = scanner.nextInt(); System.out.println("Enter the value of b: ");
+b = scanner.nextInt(); System.out.println("Enter the operator (+, -, *, /): "); op = scanner.next().charAt(0); 
+// Calculate the value of c. switch (op) { case '+': c = a + b; break; case '-': c = a - b; break; case '*': c = a * b;
+break; case '/': c = a / b; break; default: System.out.println("Invalid operator."); return; } 
+// Print the value of c. System.out.println("The value of c is " + c); } }
