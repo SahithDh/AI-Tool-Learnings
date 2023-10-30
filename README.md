@@ -8,7 +8,7 @@ Instructions:
 2. Activate the following tool using google collab
 3. Create an API key on maker suite and begin to initiate the pip install command
 4. Enter your API key to activate the PALM MAGIC LLM model
-5. Remember to initiate every command by running the %%palm command
+5. Remember to initiate every command by running the "%%palm" command
 
 Commands:
 1. Finding the opposites of any english words
