@@ -1,0 +1,31 @@
+##Building code to write an email
+
+Command : %%palm
+convert C function to python to send an email
+
+Code : 
+c #include <stdio.h> #include <stdlib.h> #include <string.h> #include <unistd.h> 
+#include <sys/types.h> #include <sys/socket.h> #include <netinet/in.h> 
+#include <arpa/inet.h> #define SMTP_PORT 25 int main(int argc, char *argv[]) 
+{ int sockfd, n; struct sockaddr_in servaddr; char buff[1024]; 
+/* Create a socket */ sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd < 0) { perror("socket"); exit(1); }
+/* Connect to SMTP server */ memset(&servaddr, 0, sizeof(servaddr)); 
+servaddr.sin_family = AF_INET; servaddr.sin_port = htons(SMTP_PORT); 
+inet_pton(AF_INET, "127.0.0.1", &servaddr.sin_addr); if (connect(sockfd, 
+(struct sockaddr *)&servaddr, sizeof(servaddr)) < 0) { perror("connect"); exit(1); } 
+/* Send HELO command */ strcpy(buff, "HELO world\r\n"); n = write(sockfd, buff, strlen(buff)); 
+if (n < 0) { perror("write"); exit(1); } /* Read response from server */ n = read(sockfd, buff, sizeof(buff));
+if (n < 0) { perror("read"); exit(1); } printf("Received: %s\n", buff); 
+/* Send MAIL FROM command */ strcpy(buff, "MAIL FROM: <sender@example.com>\r\n"); 
+n = write(sockfd, buff, strlen(buff)); if (n < 0) { perror("write"); exit(1); } 
+/* Read response from server */ n = read(sockfd, buff, sizeof(buff)); if (n < 0) 
+{ perror("read"); exit(1); } printf("Received: %s\n", buff); /* Send RCPT TO command */ strcpy(buff, "RCPT TO: <receiver@example.com>\r\n");
+n = write(sockfd, buff, strlen(buff)); if (n < 0) { perror("write"); exit(1); }
+/* Read response from server */ n = read(sockfd, buff, sizeof(buff)); 
+if (n < 0) { perror("read"); exit(1); } printf("Received: %s\n", buff);
+/* Send DATA command */ strcpy(buff, "DATA\r\n"); n = write(sockfd, buff, strlen(buff));
+if (n < 0) { perror("write"); exit(1); } /* Read response from server */ n = read(sockfd, buff, sizeof(buff)); 
+if (n < 0) { perror("read"); exit(1); } printf("Received: %s\n", buff); 
+/* Send email body */ strcpy(buff, "This is an email message.\r\n"); n = write(sockfd, buff, strlen(buff));
+if (n < 0) { perror("write"); exit(1); } /* Send . (dot) to indicate end of email body */ strcpy(buff, ".\r\n");
+n = write(sockfd, buff, strlen(buff)); if (n < 0) { perror("write"); exit(1); } /* Read response from server */ n = read(sockfd, buff, sizeof(buff));
