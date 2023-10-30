@@ -1,0 +1,10 @@
+## CREATING CODE FOR GENERATING THE FIBONACCI SERIES
+
+Command : 
+%%palm
+convert java function to python to generate fibonacci series
+
+Code output :
+python def fibonacci(n): """Returns the nth fibonacci number. 
+Args: n: An integer, the index of the fibonacci number to return. 
+Returns: The nth fibonacci number. """ if n < 2: return n return fibonacci(n - 2) + fibonacci(n - 1)
