@@ -1,0 +1,31 @@
+## To generate code for taking inputs and executing arithmetic operations
+
+Commands:
+1. Addition - 
+%%palm
+convert c function to python to add two numbers
+
+2. Subtraction - 
+%%palm
+Convert C function to java to subbtract two numbers
+
+3. Division - 
+%%palm
+Convert C function to java to divide two numbers
+
+4. Multiplication - 
+%%palm
+Convert C function to java to mulitply two numbers
+
+Code:
+1. Addition - python def add_two_numbers(x, y): """Adds two numbers together. 
+Args: x: The first number to add. y: The second number to add. Returns: The sum of `x` and `y`. """ return x + y
+
+2. Subtraction - java public static int subtract(int x, int y) { return x - y; }
+
+3. Divide - python def divide(x, y): """Divides two numbers and returns the result. 
+Args: x: The first number to divide. y: The second number to divide by. 
+Returns: The result of the division. """ return x / y 
+
+4. Multiply - python def multiply(a, b): """Multiply two numbers. Args: 
+a: The first number. b: The second number. Returns: The product of `a` and `b`. """ return a * b
